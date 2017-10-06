@@ -1,0 +1,57 @@
+body {
+    background-color: #f5f5f5;
+    background-image: url("https://avante.biz/wp-content/uploads/Background-Images-For-Websites/Background-Images-For-Websites-001.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.event_page {
+    display: flex;
+    flex-direction: column;
+}
+
+.back_button {
+    display: flex;
+    justify-content: flex-start;
+    font-family: TakaoPGothic;
+    font-size: 2em;
+    color: #475a68;
+    background-color: rgba(163, 190, 215, 1);
+    padding: 1.5% 2% 1.5% 2%;
+}
+
+.back_button:hover {
+    background-color: rgba(163, 190, 215, 0.75);
+}
+
+a:link {
+    text-decoration: none;
+    color: #475a68;
+}
+
+.event_info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.event_page img {
+    width: 50%;
+    height: auto;
+}
+
+.details {
+    background-color: rgba(108, 123, 42, 0.7);
+    border-collapse: collapse;
+    font-family: TakaoPGothic;
+}
+
+.details th, tr {
+    border: solid;
+    border-width: 1px;
+    padding: 1.5%;
+    font-size: 1.3em;
+    font-weight: normal;
+}
