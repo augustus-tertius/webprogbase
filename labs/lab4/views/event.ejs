@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=event.name%></title>
+    <link rel="stylesheet" href="/stylesheets/style_event_page.css">
+</head>
+<body>
+    <div class="event_page">
+        <div><a href="/events" class="back_button">Back to all events</a></div>
+        <div class="event_info">
+            <img alt="event image" src="<%=event.picturePath%>">
+            <div class="right_col">
+                <table class="details">
+                    <tr>
+                        <th>Name of event</th>
+                        <th><%=event.name%></th>
+                    </tr>
+                    <tr>
+                        <th>Place</th>
+                        <th><%=event.place%></th>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <th><%=event.date%></th>
+                    </tr>
+                    <tr>
+                        <th>Duration(in minutes)</th>
+                        <th><%=event.duration%></th>
+                    </tr>
+                </table>
+                <form action="/event/delete/<%=event.id%>" method="post">
+                    <button type="submit">Delete this event</button>
+                </form>
+             </div>
+        </div>
+    </div>
+</body>
+</html>

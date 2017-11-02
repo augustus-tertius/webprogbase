@@ -14,16 +14,19 @@ app.get('/',
 app.get('/events',
     (req,res) => res.render('events', {event_list}));
 
-app.get('/event/[0-9a-f-]{24}',
+app.get('/event/:guid([0-9a-f-]{24})',
     (req, res) => {
         console.log(req.originalUrl);
-        let pos =  req.originalUrl.search(new RegExp('[0-9a-f-]{24}'));
-        let event_id = req.originalUrl.substr(pos);
+        //let pos =  ;//req.originalUrl.search(new RegExp('[0-9a-f-]{24}'));
+        let event_id = req.params.guid //req.originalUrl.substr(pos);
         events.getById(event_id)
             .then(event => {
                 res.render('event', {event});
             })
-            .catch(err => {console.log(err);});
+            .catch(
+                err => {console.log(err);
+                res.sendStatus(404);
+                });
     });
 
 let event_list;

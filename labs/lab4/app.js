@@ -1,0 +1,127 @@
+const events = require('./modules/events.js');
+const construcor = require('./modules/event.js');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const multer = require('multer');
+
+const app = express();
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+let storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, 'public/images/');
+    },
+    filename: function(req, file, callback) {
+        callback(null, construcor.generatePicId() + path.extname(file.originalname));
+    }
+});
+
+app.get('/',
+    (req,res) => res.render('index'));
+
+app.get('/events',
+    (req,res) => {
+        res.render('events', {event_list})
+    });
+
+app.get('/add',
+    (req, res) => res.render('add'));
+
+app.get('/event/:guid([0-9a-f-]{24})',
+    (req, res) => {
+        let event_id = req.params.guid;
+        events.getById(event_id)
+            .then(event => {
+                res.render('event', {event});
+            })
+            .catch(
+                err => {
+                    console.log(err);
+                    res.sendStatus(404);
+                });
+    });
+
+app.get('/search/query?input=[\s\S]*/page', (req, res) => {
+    let qu = req.originalUrl.substring(req.originalUrl.indexOf('=') + 1);
+    let found = [];
+    let pageNum = req.originalUrl.substring(req.originalUrl.lastIndexOf('=') + 1);
+    let split = req.originalUrl.split('/');
+    let url = '/' + split[0] + '/' + split[1];
+    console.log(url, pageNum);
+    if (qu !== "") {
+        for (let i of event_list) {
+            if (i.name.indexOf(qu) !== -1)
+                found.push(i);
+        }
+    }
+    res.render('search', {found, pageNum, url});
+});
+
+app.get('/search/query', (req, res) => {
+    console.log('no params');
+    let qu = req.originalUrl.substring(req.originalUrl.indexOf('=') + 1);
+    let found = [];
+    let pageNum = 0;
+    let url = req.originalUrl;
+    if (qu !== "") {
+        for (let i of event_list) {
+            if (i.name.indexOf(qu) !== -1)
+                found.push(i);
+        }
+    }
+    res.render('search', {found, pageNum, url});
+});
+
+app.get('/search', (req, res) => {
+    let found = [];
+    let pageNum = 0;
+    let url = req.originalUrl;
+    console.log(req.body);
+    res.render('search', {found, pageNum, url});
+});
+
+app.post('/add', (req, res) => {
+    let upload = multer({ storage: storage}).single('userFile');
+    let filepath = "";
+
+    upload(req, res, function(err) {
+        filepath = '/images/' + req.file.filename;
+        res.end('File was uploaded');
+        events.create(construcor.Event(req.body.name, req.body.place, req.body.duration, req.body.date, filepath))
+            .catch(err => {console.log(err, "\n")});
+    });
+    res.redirect('/events');
+});
+
+app.post('/event/delete/:guid([0-9a-f-]{24})',
+    (req, res) => {
+        console.log('trying to del', req.originalUrl);
+        let event_id = req.params.guid;
+        events.remove(event_id)
+            .then(() => {
+                res.redirect('/events');
+            })
+            .catch(
+                err => {
+                    console.log(err);
+                    res.sendStatus(404);
+                });
+    });
+
+
+let event_list;
+events.getAll()
+    .then(data => {
+        event_list = data;
+    })
+    .catch(data => {
+        console.log("An error occured: ", data);
+    });
+
+let port_num = 3000;
+app.listen(port_num, () => console.log(`Server started on port ${port_num}.`));

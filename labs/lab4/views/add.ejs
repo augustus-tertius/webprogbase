@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new event</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <form action="/add" method="post" enctype="multipart/form-data">
+        Name:<br>
+        <input type="text" id="name" name="name"/> <br>
+        Place:<br>
+        <input type="text" id="place" name="place"/> <br>
+        Duration:
+        <input type="number" id="duration" name="duration" value="60"/> <br>
+        Date:
+        <input type="date" id="date" name="date"/> <br>
+        Event pic:
+        <input type="file" name="userFile" /> <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

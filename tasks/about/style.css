@@ -1,0 +1,18 @@
+h1, h2 {
+    color: darkgreen;
+}
+
+img {
+    border: 5px inset green;
+}
+
+.box {
+    border: 5px inset green;
+    font-size: larger;
+}
+
+a {
+    font-family: TakaoPGothic;
+    color: saddlebrown;
+    background-color: darkseagreen;
+}
