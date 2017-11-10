@@ -9,15 +9,14 @@
 
 <div><a href="/events" class="back_button">Back to all events</a></div>
 
-<form id="search_area" action="/search/query" method="get">
-    <input type="text" id="input" placeholder="Search for events by name..." name="input">
+<form id="search_area" action="/search" method="get">
+    <input type="text"  id="input" name="input" value=<%=qu%>>
     <button type="submit">Search</button>
 </form>
 
 <%if (found.length > 0) { %>
 <%let pageSize = 2;%>
 <ul>
-    <%/* for(let i = pageNum * pageSize; i < (pageNum + 1) * pageSize; i++) { */%>
     <%for(let i in found) { %>
     <li> <div class="event_block">
             <img alt="event image" src="<%=found[i].picturePath%>">
@@ -36,7 +35,19 @@
         </div> </li>
     <%}%>
 </ul>
-<a href=<%=url + '/page=' + (pageNum - 1)%>> Previous </a> || <a href=<%=url + '/page=' + (pageNum + 1)%>> Next</a>
+<%if(pageNum == 1) {%>
+    Already the first page
+<%} else {%>
+    <a href=<%=url + '&page=' + (pageNum - 1) %>> Previous </a>
+<%}%>
+||
+Currently viewing page number <%=pageNum%> out of <%=lastPage%>
+||
+<% if(pageNum == lastPage) {%>
+    Already the last page
+<%} else {%>
+    <a href=<%=url + '&page=' + (pageNum - -1)%>> Next</a>
+<%}%>
 <%} else { %>
 Sorry, nothing matches your search.
 <%}%>

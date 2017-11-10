@@ -46,43 +46,32 @@ app.get('/event/:guid([0-9a-f-]{24})',
                 });
     });
 
-app.get('/search/query?input=[\s\S]*/page', (req, res) => {
-    let qu = req.originalUrl.substring(req.originalUrl.indexOf('=') + 1);
-    let found = [];
-    let pageNum = req.originalUrl.substring(req.originalUrl.lastIndexOf('=') + 1);
-    let split = req.originalUrl.split('/');
-    let url = '/' + split[0] + '/' + split[1];
-    console.log(url, pageNum);
-    if (qu !== "") {
-        for (let i of event_list) {
-            if (i.name.indexOf(qu) !== -1)
-                found.push(i);
-        }
-    }
-    res.render('search', {found, pageNum, url});
-});
-
-app.get('/search/query', (req, res) => {
-    console.log('no params');
-    let qu = req.originalUrl.substring(req.originalUrl.indexOf('=') + 1);
-    let found = [];
-    let pageNum = 0;
-    let url = req.originalUrl;
-    if (qu !== "") {
-        for (let i of event_list) {
-            if (i.name.indexOf(qu) !== -1)
-                found.push(i);
-        }
-    }
-    res.render('search', {found, pageNum, url});
-});
-
 app.get('/search', (req, res) => {
     let found = [];
-    let pageNum = 0;
+    let pageNum = 1;
+    let pageSize = 2;
+    let qu = "";
     let url = req.originalUrl;
-    console.log(req.body);
-    res.render('search', {found, pageNum, url});
+    if (req.originalUrl.indexOf("&page=") !== -1) {
+        pageNum = req.query.page;
+        url = req.originalUrl.substring(0, req.originalUrl.indexOf("&page="));
+    }
+    let start = (pageNum - 1) * pageSize;
+    let end = start + pageSize -1;
+    let foundItems = -1;
+    if (req.query.input) {
+        qu = req.query.input;
+        for (let i of event_list) {
+            if (i.name.indexOf(req.query.input) !== -1) {
+                foundItems++;
+                if (foundItems >= start && foundItems <= end)
+                    found.push(i);
+            }
+        }
+    }
+    foundItems += 1;
+    let lastPage = Math.floor(foundItems / pageSize + foundItems % pageSize);
+    res.render('search', {found, pageNum, lastPage, qu, url});
 });
 
 app.post('/add', (req, res) => {
