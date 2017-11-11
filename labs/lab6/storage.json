@@ -1,0 +1,50 @@
+[
+  {
+    "id": "33f9-6c2a-8ef3-8cc4-8911",
+    "name": "Jogging",
+    "place": "Gym",
+    "duration": 80,
+    "date": "2017-10-16T08:30:00Z",
+    "picturePath": "/images/jogging.jpeg"
+  },
+  {
+    "id": "2c1a-5712-e9d6-dc8d-8660",
+    "name": "Visit to the Doctor",
+    "place": "Blue box",
+    "duration": 2,
+    "date": "2205-01-31T00:00:00Z",
+    "picturePath": "/images/doctor.jpg"
+  },
+  {
+    "id": "a09f-6174-8302-8801-ea6f",
+    "name": "Just one more test",
+    "place": "teeeeeeeest",
+    "duration": "60",
+    "date": "2018-07-07",
+    "picturePath": "/images/1a8396290cce60ad3d23.jpg"
+  },
+  {
+    "id": "d93a-b26a-14f4-c679-34b3",
+    "name": "Ok, one more time",
+    "place": "Hope it works",
+    "duration": "60",
+    "date": "6090-08-02",
+    "picturePath": "/images/1ccecd689c5355f4273c.jpg"
+  },
+  {
+    "id": "e7be-a6f8-8996-a159-fd4a",
+    "name": "Test test teteteeest",
+    "place": "no place",
+    "duration": "60",
+    "date": "2019-03-05",
+    "picturePath": "/images/decfaefe2f00955e58d8.jpg"
+  },
+  {
+    "id": "e7cf-396b-a9b0-c010-c48f",
+    "name": "test",
+    "place": "i need more green pics here",
+    "duration": "60",
+    "date": "20001-06-07",
+    "picturePath": "/images/1810683c3bdbf3c34868.jpg"
+  }
+]

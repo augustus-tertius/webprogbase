@@ -1,0 +1,157 @@
+body {
+    background-color: #f5f5f5;
+    background-image: url("https://avante.biz/wp-content/uploads/Background-Images-For-Websites/Background-Images-For-Websites-001.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: TakaoPGothic;
+}
+
+.event_page {
+    display: flex;
+    flex-direction: column;
+}
+
+#search_area {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+    border: 1px solid #ddd;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(125, 127, 129, 0.9);
+    padding: 0.3%;
+    font-size: 1.4em;
+}
+
+.navbar_controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    background-color: rgba(163, 190, 215, 1);
+    border: none;
+    padding: 15px 32px;
+    margin-top: 0.2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+}
+
+.navbar_controls button {
+    background-color: rgba(125, 127, 129, 0);
+    border: none;
+    padding: 0px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: inherit;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+    color: #475a68;
+}
+
+#input {
+    width: 100%;
+    padding: 12px 20px 12px 40px;
+}
+
+button {
+    color: white;
+    background-color: #475a68;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 30%;
+}
+
+.back_button {
+    display: flex;
+    justify-content: flex-start;
+    font-family: TakaoPGothic;
+    font-size: 2em;
+    color: #475a68;
+    background-color: rgba(163, 190, 215, 1);
+    padding: 1.5% 2% 1.5% 2%;
+}
+
+a:link {
+    text-decoration: none;
+    color: #475a68;
+}
+
+.event_block {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: row;
+    background-color: rgba(71, 90, 104, 0.6);
+}
+
+.event_details {
+    display: flex;
+    flex-direction: column;
+    justify-content:  space-around;
+    align-items: stretch;
+    width: 100%;
+}
+
+.name {
+    background-color: #6c7b2a;
+    font-size: 2.3em;
+    width: 100%;
+}
+
+.name a {
+    color: black;
+}
+
+.name:hover {
+    background-color: rgba(108, 123, 42, 0.4);
+}
+
+.place {
+    display: flex;
+    flex-direction: row;
+    justify-content:  space-around;
+    font-size: 1.7em;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content:  space-around;
+    font-size: 1.7em;
+}
+
+.event_block img {
+    display: flex;
+    height: 165px;
+    width: 260px;
+}
+
+ul {
+    list-style: none;
+}
+
+li{
+    margin: 3% 0;
+}
