@@ -257,5 +257,5 @@ input[type=submit] {
 
 .field_value {
     display:flex;
-    justify-content: ;
+    justify-content: last-baseline;
 }
