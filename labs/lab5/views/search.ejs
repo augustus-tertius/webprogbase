@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="/stylesheets/style_search.css">
+</head>
+<body>
+
+<div><a href="/events" class="back_button">Back to all events</a></div>
+
+<form id="search_area" action="/search" method="get">
+    <input type="text" id="input" placeholder="Search for events by name..." name="input">
+    <button type="submit">Search</button>
+</form>
+
+<%if (found.length > 0) { %>
+<ul>
+    <%/* for(let i = pageNum * pageSize; i < (pageNum + 1) * pageSize; i++) { */%>
+    <%for(let i in found) { %>
+    <li> <div class="event_block">
+            <img alt="event image" src="<%=found[i].picturePath%>">
+            <div class="event_details">
+                <%let path = '/event/'+ found[i].id%>
+                <div class="name"> <a href=<%=path%>> <%=found[i].name%> </a></div>
+                <div class="place">
+                    <div> Place: </div>
+                    <div> <%=found[i].place%></div>
+                </div>
+                <div class="date">
+                    <div> Date:</div>
+                    <div> <%=found[i].date%></div>
+                </div>
+            </div>
+        </div> </li>
+    <%}%>
+</ul>
+<%} else { %>
+Sorry, nothing matches your search.
+<%}%>
+</body>
+</html>
