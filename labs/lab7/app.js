@@ -234,7 +234,6 @@ app.get('/everyone',
 app.post('/add', upload.single('pic'),
     checkAuth,
     (req, res) => {
-    console.log(req.file);
     events.create(construcor.Event(req.body.name, req.body.place, req.body.duration, req.body.date),
         '/images/' + req.file.filename, req.user.id)
         .catch(err => {console.log('An error while creating: ', err, "\n");});
@@ -270,19 +269,43 @@ app.get('/api/v1/',
 });
 
 app.get('/api/v1/user', basic_auth,
-    (req, res) => {
-    if (req.user) {
-        let resp = {
-            username: req.user.username
-        };
-        res.send(JSON.stringify(resp, null, 4));
-    } else {
-        let resp = {
-            message: "auth required to access this page"
-        };
-        res.send(JSON.stringify(resp, null, 4));
-    }
+    async (req, res) => {
+        if (req.user) {
+            let count = await events.countAll(req.user.id);
+            let resp = {
+                username: req.user.username,
+                events_quan: count
+            };
+            res.send(JSON.stringify(resp, null, 4));
+        } else {
+            let resp = {
+                message: "auth required to access this page"
+            };
+            res.send(JSON.stringify(resp, null, 4));
+        }
 });
+
+app.get('/api/v1/user/events', basic_auth,
+    async (req, res) => {
+        if (req.user) {
+            let found = await events.getAll(req.user.id);
+            let resp = [];
+            if (req.query.name) {
+                for (let i of found) {
+                    if (i.name.indexOf(req.query.name) !== -1)
+                        resp.push(i);
+                }
+            } else {
+                resp = found;
+            }
+            res.send(JSON.stringify(resp, null, 4));
+        } else {
+            let resp = {
+                message: "auth required to access this page"
+            };
+            res.send(JSON.stringify(resp, null, 4));
+        }
+    });
 
 let event_list;
 

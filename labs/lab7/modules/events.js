@@ -56,6 +56,16 @@ function getAll(authorId) {
     });
 }
 
+function countAll(authorId) {
+    return new Promise(function (resolve, reject) {
+        Event.find({authorId: authorId}, function (err, docs) {
+            if (err)
+                reject(err);
+            resolve(JSON.parse(JSON.stringify(docs)).length);
+        });
+    });
+}
+
 function getById(x_id) {
     return new Promise(function (resolve, reject) {
         Event.findById(x_id, function (err, event){
@@ -84,5 +94,6 @@ function remove(x_id) {
 
 module.exports.create = create;
 module.exports.getAll = getAll;
+module.exports.countAll = countAll;
 module.exports.getById = getById;
 module.exports.remove = remove;
