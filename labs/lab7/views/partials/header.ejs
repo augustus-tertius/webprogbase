@@ -1,0 +1,18 @@
+<div class="navbar">
+    <% if (user) { %>
+        <a href='/events'><b><%= 'Hello,' + user.username %></b></a>
+        <div class="navbar_controls">
+            <a href='/logout'>Log out</a>
+        </div>
+    <% } else { %>
+        I dont recognise you.
+        <div class="navbar_controls">
+            <form action="/sign_up" method="get">
+                <button type="submit">Sign up</button>
+            </form>
+            <form action="/login" method="get">
+                <button type="submit">Log in</button>
+            </form>
+        </div>
+    <% } %>
+</div>

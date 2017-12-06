@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/jq/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+<%if (user) {%>
+<a href="/events"><H1 id="mainpage_info">Look through the upcoming events</H1></a>
+<% } else {%>
+<div class="singup_info">
+    <H3>Log in or sign up to continue.</H3>
+    <div class="buttons">
+        <form action="/sign_up" method="get">
+            <button type="submit">Sign up</button>
+        </form>
+        <form action="/login" method="get">
+            <button type="submit">Log in</button>
+        </form>
+
+    </div>
+</div>
+<%}%>
+</body>
+</html>

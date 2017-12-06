@@ -1,0 +1,48 @@
+<% include partials/header %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>See all events</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+<table class="page_table">
+    <tr>
+        <td id="info_col">
+            <div class="menu">
+                <a href="/" class="link_button">Back to the main page</a>
+                <a href="/add" class="link_button">Add new event to the list</a>
+                <a href="/search" class="link_button">Search</a>
+                <%if (user.role === 'admin') {%>
+                    <a href="/everyone" class="link_button">See all registered users</a>
+                <%}%>
+                <div class="info">Here you can see all of your plans</div>
+            </div>
+        </td>
+        <td id="event_col">
+            <ul>
+                <%for(let i in event_list) { %>
+                <li> <div class="event_block">
+                    <img alt="event image" src="<%=event_list[i].picture%>">
+                    <div class="event_details">
+                        <%let event_path = 'event/'+ event_list[i].id%>
+                        <div class="name"> <a href="<%=event_path%>"> <%=event_list[i].name%> </a></div>
+                        <div class="place">
+                            <div> Place: </div>
+                            <div> <%=event_list[i].place%></div>
+                        </div>
+                        <div class="date">
+                            <div> Date:</div>
+                            <div> <%=event_list[i].date%></div>
+                        </div>
+                    </div>
+                </div> </li>
+                <%}%>
+            </ul>
+        </td>
+    </tr>
+    </table>
+</body>
+</html>

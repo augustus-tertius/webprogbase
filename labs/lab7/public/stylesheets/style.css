@@ -1,0 +1,261 @@
+body {
+    background-color: #f5f5f5;
+    background-image: url("https://avante.biz/wp-content/uploads/Background-Images-For-Websites/Background-Images-For-Websites-001.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: TakaoPGothic;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(125, 127, 129, 0.9);
+    padding: 0.3%;
+    font-size: 1.4em;
+}
+
+.navbar_controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    background-color: rgba(163, 190, 215, 1);
+    border: none;
+    padding: 15px 32px;
+    margin-top: 0.2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar_controls button{
+    background-color: rgba(125, 127, 129, 0);
+    border: none;
+    padding: 0px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: inherit;
+}
+
+#mainpage_info {
+    color: #6c7b2a;
+    font-family: TakaoPGothic;
+    font-size: 3.7em;
+    margin: 11.4% 0% 14% 0%;
+    padding: 0.6% 60% 0.6% 25%;
+    background-color: rgba(125, 127, 129, 0.23);
+}
+
+#mainpage_info:hover {
+    background-color: rgba(125, 127, 129, 0.4);
+}
+
+a:link {
+    text-decoration: none;
+    color: #475a68;
+}
+
+.singup_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #6c7b2a;
+    font-size: 1.9em;
+    font-family: TakaoPGothic;
+    margin: 11.4% 0% 14% 0%;
+    background-color: rgba(125, 127, 129, 0.23);
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    width: 40%;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%;
+    width: 100%;
+}
+
+.page_table {
+    width: 100%;
+    height: 100%
+}
+
+#info_col {
+    width: 45%
+}
+
+#event_col {
+    width: 65%
+}
+
+.link_button {
+    height: 7vh;
+    font-family: TakaoPGothic;
+    font-size: 2em;
+    color: #475a68;
+    background-color: rgba(163, 190, 215, 1);
+    padding: 1.5% 2% 1.5% 2%;
+    margin-bottom: 2px;
+}
+
+.link_button:hover {
+    background-color: rgba(163, 190, 215, 0.75);
+}
+
+.info {
+    height: 100%;
+    color: #6c7b2a;
+    font-family: TakaoPGothic;
+    font-size: 3.7em;
+    background-color: rgba(125, 127, 129, 0.35);
+}
+
+.event_block {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: row;
+    background-color: rgba(71, 90, 104, 0.6);
+}
+
+.event_details {
+    display: flex;
+    flex-direction: column;
+    justify-content:  space-around;
+    align-items: stretch;
+    width: 100%;
+}
+
+.name {
+    background-color: #6c7b2a;
+    font-size: 2.3em;
+    width: 100%;
+}
+
+.name a {
+    color: black;
+}
+
+.name:hover {
+    background-color: rgba(108, 123, 42, 0.4);
+}
+
+.place {
+    display: flex;
+    flex-direction: row;
+    justify-content:  space-around;
+    font-size: 1.7em;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content:  space-around;
+    font-size: 1.7em;
+}
+
+.event_block img {
+    display: flex;
+    height: 165px;
+    width: 260px;
+}
+
+ul {
+    list-style: none;
+}
+
+li{
+    margin: 3% 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=text] {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=date], input[type=file] input[type=number]{
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    align-items: left;
+}
+
+input[type=number]{
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    align-items: left;
+}
+
+input[type=submit] {
+    width: 60%;
+    color: white;
+    background-color: #475a68;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.form-control {
+    width: auto;
+}
+
+.user_block {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: column;
+    background-color: rgba(71, 90, 104, 0.6);
+}
+
+.username, .role {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-self: left;
+    font-size: 1.7em;
+    width: 100%;
+}
+
+.field_name {
+    display: flex;
+    background-color: #6c7b2a;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.field_value {
+    display:flex;
+    justify-content: last-baseline;
+}
