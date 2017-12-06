@@ -10,6 +10,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const multer = require('multer');
 const app = express();
+const basicAuth = require('basic-auth');
 let config = require('./config');
 
 app.set('view engine', 'ejs');
@@ -97,6 +98,23 @@ function checkAdmin(req, res, next) {
     if (req.user.role !== 'admin')
         res.sendStatus(401);
     next();
+}
+
+function basic_auth(req, res, next) {
+    let n_user = basicAuth(req);
+    if (n_user && n_user.name && n_user.pass) {
+        let hash = sha512(n_user.pass, serverSalt).passwordHash;
+        users.getUserByLoginAndPasshash(n_user.name, hash)
+            .then (res_user => {
+                req.user = res_user;
+                next();
+            })
+            .catch (() => {
+                next();
+            });
+    } else {
+        next();
+    }
 }
 
 app.get('/',
@@ -241,13 +259,29 @@ app.post('/event/delete/:guid([0-9a-f-]{24})',
     });
 
 
-app.get('/api/v1/', (req, res) => {
+app.get('/api/v1/',
+    (req, res) => {
     let d = "localhost:3000";
     let resp = {
         user_data: d + "/api/v1/user",
-        user_events: d + "api/vi/user/"
+        user_events: d + "/api/v1/user/events"
     };
-    res.send();
+    res.send(JSON.stringify(resp, null, 4));
+});
+
+app.get('/api/v1/user', basic_auth,
+    (req, res) => {
+    if (req.user) {
+        let resp = {
+            username: req.user.username
+        };
+        res.send(JSON.stringify(resp, null, 4));
+    } else {
+        let resp = {
+            message: "auth required to access this page"
+        };
+        res.send(JSON.stringify(resp, null, 4));
+    }
 });
 
 let event_list;

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const url = 'mongodb://localhost:27017/lab6';
+const url = 'mongodb://localhost:27017/labs';
 mongoose.connect(url);
 
 let Schema = mongoose.Schema,
