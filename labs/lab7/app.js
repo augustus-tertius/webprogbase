@@ -117,6 +117,34 @@ function basic_auth(req, res, next) {
     }
 }
 
+function apiCheckAuthor(req, res, next) {
+    if (!req.user) {
+        next();
+    }
+    events.getById(req.params.guid)
+        .then(event => {
+            if(event.authorId !== req.user.id)
+            {
+                let resp = {
+                    code: 401,
+                    message: "you are not authorised to view this page"
+                };
+                res.send(JSON.stringify(resp, null, 4));
+            } else {
+                next();
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+            let resp = {
+                code: 500,
+                message: "an error occurred"
+            };
+            res.send(JSON.stringify(resp, null, 4));
+        });
+    // next();
+}
+
 app.get('/',
     (req,res) => res.render('index', {user: req.user}));
 
@@ -311,7 +339,7 @@ app.get('/api/v1/user/events', basic_auth,
         }
     });
 
-app.get('/api/v1/user/event/:guid([0-9a-f-]{24})', basic_auth, checkAuthor,
+app.get('/api/v1/user/event/:guid([0-9a-f-]{24})', basic_auth, apiCheckAuthor,
     async (req, res) => {
         if (req.user) {
             let found = await events.getById(req.params.guid);
@@ -321,7 +349,7 @@ app.get('/api/v1/user/event/:guid([0-9a-f-]{24})', basic_auth, checkAuthor,
                 place: found.place,
                 date: found.date,
                 duration: found.duration,
-                pic: "/api/v1/pictures/" + found.id
+                pic: "/api/v1" + found.picture
             };
             res.send(JSON.stringify(resp, null, 4));
         } else {
@@ -330,6 +358,27 @@ app.get('/api/v1/user/event/:guid([0-9a-f-]{24})', basic_auth, checkAuthor,
             };
             res.send(JSON.stringify(resp, null, 4));
         }
+    });
+
+
+app.get('/api/v1/images/:picid([0-9a-z]{32})',
+    async (req, res) => {
+        let options = {
+            root: __dirname + '/public/images/',
+            dotfiles: 'deny',
+            headers: {
+                'x-timestamp': Date.now(),
+                'x-sent': true,
+            }
+        };
+
+        let filename = req.params.picid;
+        res.header("Content-Type", "image");
+        res.sendFile(filename, options, function (err) {
+            if (err) {
+                console.log(err);
+            }
+        });
     });
 
 let event_list;
