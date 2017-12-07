@@ -85,10 +85,10 @@ function checkAuth(req, res, next) {
 function checkAuthor(req, res, next) {
     events.getById(req.params.guid)
         .then(event => {
-            if(req.params.guid !== req.user.id)
+            if(event.authorId !== req.user.id)
                 res.sendStatus(401);
         })
-        .catch(err => {
+        .catch(() => {
             res.sendStatus(500);
         });
     next();
@@ -290,14 +290,39 @@ app.get('/api/v1/user/events', basic_auth,
         if (req.user) {
             let found = await events.getAll(req.user.id);
             let resp = [];
-            if (req.query.name) {
-                for (let i of found) {
-                    if (i.name.indexOf(req.query.name) !== -1)
-                        resp.push(i);
+            let q = (req.query.name) ? (req.query.name) : "";
+            for (let i of found) {
+                if (i.name.indexOf(q) !== -1) {
+                    let info = {
+                        id: i.id,
+                        name: i.name,
+                        date: i.date,
+                        info: "/api/v1/user/event/" + i.id
+                    };
+                    resp.push(info);
                 }
-            } else {
-                resp = found;
             }
+            res.send(JSON.stringify(resp, null, 4));
+        } else {
+            let resp = {
+                message: "auth required to access this page"
+            };
+            res.send(JSON.stringify(resp, null, 4));
+        }
+    });
+
+app.get('/api/v1/user/event/:guid([0-9a-f-]{24})', basic_auth, checkAuthor,
+    async (req, res) => {
+        if (req.user) {
+            let found = await events.getById(req.params.guid);
+            let resp = {
+                id: found.id,
+                name: found.name,
+                place: found.place,
+                date: found.date,
+                duration: found.duration,
+                pic: "/api/v1/pictures/" + found.id
+            };
             res.send(JSON.stringify(resp, null, 4));
         } else {
             let resp = {
