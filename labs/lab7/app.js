@@ -405,13 +405,19 @@ app.post('/api/v1/user/event/delete/:guid([0-9a-f-]{24})', basic_auth, apiCheckA
         }
     });
 
-app.post('/api/v1/user/event/delete/:guid([0-9a-f-]{24})', basic_auth, apiCheckAuthor,
+app.post('/api/v1/user/event/create', basic_auth, upload.single('pic'),
     (req, res) => {
         if (req.user) {
-            events.remove(req.params.guid)
+            events.create(construcor.Event(
+                req.body.name,
+                req.body.place,
+                req.body.duration,
+                req.body.date),
+                '/images/' + req.file.filename,
+                req.user.id)
                 .then(() => {
                     let resp = {
-                        message: "successfully deleted event"
+                        message: "successfully created the event"
                     };
                     res.send(JSON.stringify(resp));
                 })
