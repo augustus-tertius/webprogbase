@@ -78,6 +78,25 @@ function getById(x_id) {
     });
 }
 
+function update(x) {
+    return new Promise(function (resolve, reject) {
+        Event.findById(x.id, function (err, event){
+            if (err)
+                reject(err);
+            if (!event)
+                reject('no event wiht such id');
+            // resolve(JSON.parse(JSON.stringify(event)));
+            event.name = x.name;
+            event.place = x.place;
+            event.duration = x.duration;
+            event.date = x.date;
+            // event.picture = x.picture;
+            event.save();
+            resolve('updated event');
+        } );
+    });
+}
+
 function remove(x_id) {
     return new Promise(function (resolve, reject) {
         Event.findById(x_id, function (err, event) {
@@ -93,6 +112,7 @@ function remove(x_id) {
 
 
 module.exports.create = create;
+module.exports.update = update;
 module.exports.getAll = getAll;
 module.exports.countAll = countAll;
 module.exports.getById = getById;

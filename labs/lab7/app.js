@@ -405,28 +405,84 @@ app.post('/api/v1/user/event/delete/:guid([0-9a-f-]{24})', basic_auth, apiCheckA
         }
     });
 
+app.post('/api/v1/user/event/update/:guid([0-9a-f-]{24})', basic_auth,
+    async (req, res) => {
+        console.log("update", req.body);
+        if (req.user) {
+            if (req.body.name || req.body.place || req.body.duration || req.body.date) {
+                let e_to_change = await events.getById(req.params.guid);
+                if (e_to_change) {
+                    let new_e = {
+                        id: e_to_change.id,
+                        name: (req.body.name) ? req.body.name : e_to_change.name,
+                        place: (req.body.place) ? req.body.place : e_to_change.place,
+                        duration: (req.body.duration) ? req.body.duration : e_to_change.duration,
+                        date: (req.body.date) ? req.body.date : e_to_change.date,
+                    };
+                    events.update(new_e)
+                        .then(() => {
+                            let resp = {
+                                message: "successfully updated the event"
+                            };
+                            res.send(JSON.stringify(resp));
+                        })
+                        .catch(err => {
+                            let resp = {
+                                error: err
+                            };
+                            res.send(JSON.stringify(resp));
+                        });
+                } else {
+                    let resp = {
+                        message: "event you are trying to update does not seem to exist."
+                    };
+                    res.send(JSON.stringify(resp, null, 4));
+                }
+            } else {
+                let resp = {
+                    message: "please, specify name, place, duration or date to update in body."
+                };
+                res.send(JSON.stringify(resp, null, 4));
+            }
+        } else {
+            let resp = {
+                message: "auth required to access this page"
+            };
+            res.send(JSON.stringify(resp, null, 4));
+        }
+    });
+
+
 app.post('/api/v1/user/event/create', basic_auth, upload.single('pic'),
     (req, res) => {
+        console.log("create", req.body);
         if (req.user) {
-            events.create(construcor.Event(
-                req.body.name,
-                req.body.place,
-                req.body.duration,
-                req.body.date),
-                '/images/' + req.file.filename,
-                req.user.id)
-                .then(() => {
-                    let resp = {
-                        message: "successfully created the event"
-                    };
-                    res.send(JSON.stringify(resp));
-                })
-                .catch(err => {
-                    let resp = {
-                        error: err
-                    };
-                    res.send(JSON.stringify(resp));
-                });
+            if (req.body.name && req.body.place && req.body.duration && req.body.date && req.file) {
+                events.create(construcor.Event(
+                    req.body.name,
+                    req.body.place,
+                    req.body.duration,
+                    req.body.date),
+                    '/images/' + req.file.filename,
+                    req.user.id)
+                    .then(() => {
+                        let resp = {
+                            message: "successfully created the event"
+                        };
+                        res.send(JSON.stringify(resp));
+                    })
+                    .catch(err => {
+                        let resp = {
+                            error: err
+                        };
+                        res.send(JSON.stringify(resp));
+                    });
+            } else {
+                let resp = {
+                    message: "please, specify name, place, duration, date and picture in body."
+                };
+                res.send(JSON.stringify(resp, null, 4));
+            }
         } else {
             let resp = {
                 message: "auth required to access this page"
