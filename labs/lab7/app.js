@@ -381,6 +381,54 @@ app.get('/api/v1/images/:picid([0-9a-z]{32})',
         });
     });
 
+app.post('/api/v1/user/event/delete/:guid([0-9a-f-]{24})', basic_auth, apiCheckAuthor,
+    (req, res) => {
+        if (req.user) {
+            events.remove(req.params.guid)
+                .then(() => {
+                    let resp = {
+                        message: "successfully deleted event"
+                    };
+                    res.send(JSON.stringify(resp));
+                })
+                .catch(err => {
+                    let resp = {
+                        error: err
+                    };
+                    res.send(JSON.stringify(resp));
+                });
+        } else {
+            let resp = {
+                message: "auth required to access this page"
+            };
+            res.send(JSON.stringify(resp, null, 4));
+        }
+    });
+
+app.post('/api/v1/user/event/delete/:guid([0-9a-f-]{24})', basic_auth, apiCheckAuthor,
+    (req, res) => {
+        if (req.user) {
+            events.remove(req.params.guid)
+                .then(() => {
+                    let resp = {
+                        message: "successfully deleted event"
+                    };
+                    res.send(JSON.stringify(resp));
+                })
+                .catch(err => {
+                    let resp = {
+                        error: err
+                    };
+                    res.send(JSON.stringify(resp));
+                });
+        } else {
+            let resp = {
+                message: "auth required to access this page"
+            };
+            res.send(JSON.stringify(resp, null, 4));
+        }
+    });
+
 let event_list;
 
 let portNum = config.port;
