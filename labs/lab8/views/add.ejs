@@ -11,24 +11,36 @@
     <script src="/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/validation.css">
+    <script src="javascripts/validate_adding.js"></script>
 </head>
 <body>
-
     <div class="container">
         <div class="col-md-2"> </div>
         <div class="col-md-8">
             <H2>Create new event.</H2>
-            <form action="/add" method="post" enctype="multipart/form-data">
-                <label for="username">Name:</label>
-                <input type="text" id="name" name="name" class='form-control'required/> <br>
-                <label for="username">Place:</label>
-                <input type="text" id="place" name="place" class='form-control'/> <br>
-                <label for="username">Duration:</label>
-                <input type="number" id="duration" name="duration" value="60" class='form-control'/> <br>
-                <label for="username">Date:</label>
+            <form action="/add" method="post" enctype="multipart/form-data" onsubmit="return(validate());">
+                <label for="name">Name:</label>
+                <input id="event_name" type="text" id="name" name="name" class='form-control'
+                       oninput='validate_name(name);' required/> <br>
+                <div class="alert-danger err" id="name_too_long">Name is too long: limit is 50 symbols.</div>
+
+                <label for="place">Place:</label>
+                <input id="event_place" type="text" id="place" name="place" class='form-control'
+                       oninput='validate_place(place);'/> <br>
+                <div class="alert-danger err" id="place_too_long">Place is too long: limit is 50 symbols.</div>
+
+                <label for="duration">Duration:</label>
+                <input id="event_duration" type="number" id="duration" name="duration" value="60" class='form-control'
+                       oninput='validate_duration(duration);'/> <br>
+                <div class="alert-danger err" id="duration_invalid">Please, enter valid duration.</div>
+
+                <label for="date">Date:</label>
                 <input type="date" id="date" name="date" class='form-control' required/> <br>
-                <label for="username">Event pic:</label>
+
+                <label for="pic">Event pic:</label>
                 <input type="file" name="pic" class='form-control' required/> <br>
+
                 <button class="btn btn-block btn-lg" type="submit">Create</button>
             </form>
         </div>

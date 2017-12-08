@@ -11,14 +11,14 @@
     <script src="/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="stylesheets/style.css">
-    <script src="javascripts/validate_form.js"></script>
+    <script src="javascripts/validate_signup.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="col-md-2"> </div>
         <div class="col-md-8">
             <H2>Sign up.</H2>
-            <form action="/sign_up" method="post">
+            <form action="/sign_up" method="post" onsubmit="return(validate());">
                 <label for="username">Username:</label>
                 <input type='text' name='username' placeholder="enter username" class='form-control' required/>
 
