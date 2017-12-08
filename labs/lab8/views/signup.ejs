@@ -11,6 +11,7 @@
     <script src="/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="javascripts/validate_form.js"></script>
 </head>
 <body>
     <div class="container">
@@ -19,10 +20,12 @@
             <H2>Sign up.</H2>
             <form action="/sign_up" method="post">
                 <label for="username">Username:</label>
-                <input type='text' name='username' placeholder="enter username" class='form-control' />
+                <input type='text' name='username' placeholder="enter username" class='form-control' required/>
 
                 <label for="username">Password:</label>
-                <input type='password' name='password' value='' class='form-control' />
+                <input type='password' name='password' value='' class='form-control' id="pass_input"
+                       oninput='validate_pass(password)' required/>
+                <div class="alert-danger" id="pass_to_short">Please, choose password at least 4 symbols long.</div>
                 <button class="btn btn-block btn-lg" type="submit">Sign up</button>
             </form>
         </div>
