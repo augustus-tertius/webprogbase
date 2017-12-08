@@ -316,21 +316,34 @@ app.get('/api/v1/user', basic_auth,
 app.get('/api/v1/user/events', basic_auth,
     async (req, res) => {
         if (req.user) {
-            let found = await events.getAll(req.user.id);
-            let resp = [];
             let q = (req.query.name) ? (req.query.name) : "";
-            for (let i of found) {
-                if (i.name.indexOf(q) !== -1) {
-                    let info = {
-                        id: i.id,
-                        name: i.name,
-                        date: i.date,
-                        info: "/api/v1/user/event/" + i.id
+            let page = (req.query.page && req.query.page > 1) ? req.query.page : 1;
+            let per_page = (req.query.items && req.query.items >= 1) ? req.query.items : 5;
+            // let found = await events.searchByName(req.query.q, page, per_page, req.user.id);
+            // console.log(found);
+            events.searchByName(q, page, per_page, req.user.id)
+                .then(found => {
+                    let resp = [];
+                    for (let i of found) {
+                        if (i.name.indexOf(q) !== -1) {
+                            let info = {
+                                id: i.id,
+                                name: i.name,
+                                date: i.date,
+                                info: "/api/v1/user/event/" + i.id
+                            };
+                            resp.push(info);
+                        }
+                    }
+                    res.send(JSON.stringify(resp, null, 4));
+                })
+                .catch(err => {
+                    let resp = {
+                        message: "an error occurred",
+                        err: err
                     };
-                    resp.push(info);
-                }
-            }
-            res.send(JSON.stringify(resp, null, 4));
+                    res.send(JSON.stringify(resp, null, 4));
+                });
         } else {
             let resp = {
                 message: "auth required to access this page"
@@ -357,7 +370,7 @@ app.get('/api/v1/user/event/:guid([0-9a-f-]{24})', basic_auth, apiCheckAuthor,
                 message: "auth required to access this page"
             };
             res.send(JSON.stringify(resp, null, 4));
-        }
+        }``
     });
 
 
@@ -407,7 +420,6 @@ app.post('/api/v1/user/event/delete/:guid([0-9a-f-]{24})', basic_auth, apiCheckA
 
 app.post('/api/v1/user/event/update/:guid([0-9a-f-]{24})', basic_auth,
     async (req, res) => {
-        console.log("update", req.body);
         if (req.user) {
             if (req.body.name || req.body.place || req.body.duration || req.body.date) {
                 let e_to_change = await events.getById(req.params.guid);
@@ -455,7 +467,6 @@ app.post('/api/v1/user/event/update/:guid([0-9a-f-]{24})', basic_auth,
 
 app.post('/api/v1/user/event/create', basic_auth, upload.single('pic'),
     (req, res) => {
-        console.log("create", req.body);
         if (req.user) {
             if (req.body.name && req.body.place && req.body.duration && req.body.date && req.file) {
                 events.create(construcor.Event(

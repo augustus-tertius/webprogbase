@@ -78,6 +78,41 @@ function getById(x_id) {
     });
 }
 
+function searchByName(q, page, perPage, author_id) {
+    let search_param = ".*" + q + '.*';
+    let auth = author_id;
+
+    return new Promise(((resolve, reject) => {
+        Event
+            .find({name: new RegExp(search_param), authorId: auth})
+            .skip((perPage * page) - perPage)
+            .limit(perPage)
+            .exec(function(err, docs) {
+                if (err)
+                    reject(err);
+                else
+                    resolve(JSON.parse(JSON.stringify(docs)));
+            });
+    }));
+}
+
+function countByName(q, author_id) {
+    let search_param = ".*" + q + '.*';
+    let auth = author_id;
+
+    return new Promise(((resolve, reject) => {
+        Event
+            .find({name: new RegExp(search_param), author_id: auth})
+            .count()
+            .exec(function(err, res) {
+                if (err)
+                    reject(err);
+                else
+                    resolve(res);
+            });
+    }));
+}
+
 function update(x) {
     return new Promise(function (resolve, reject) {
         Event.findById(x.id, function (err, event){
@@ -117,3 +152,5 @@ module.exports.getAll = getAll;
 module.exports.countAll = countAll;
 module.exports.getById = getById;
 module.exports.remove = remove;
+module.exports.searchByName = searchByName;
+module.exports.countByName = countByName;
