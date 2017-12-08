@@ -38,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/views/event.ejs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="561">
-              <caret line="60" column="75" lean-forward="false" selection-start-line="60" selection-start-column="75" selection-end-line="60" selection-end-column="75" />
+              <caret line="60" column="76" lean-forward="false" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -124,7 +124,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="12" />
     <option name="y" value="14" />
     <option name="width" value="584" />
@@ -228,15 +228,15 @@
       <workItem from="1512597008586" duration="6492000" />
       <workItem from="1512633053135" duration="4150000" />
       <workItem from="1512667796351" duration="19646000" />
-      <workItem from="1512752168387" duration="595000" />
+      <workItem from="1512752168387" duration="1105000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30883000" />
+    <option name="totallyTimeSpent" value="31393000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="80" y="-5" width="1841" height="1086" extended-state="7" />
+    <frame x="80" y="-5" width="1841" height="1086" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19032082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -452,7 +452,7 @@
     <entry file="file://$PROJECT_DIR$/views/event.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
-          <caret line="60" column="75" lean-forward="false" selection-start-line="60" selection-start-column="75" selection-end-line="60" selection-end-column="75" />
+          <caret line="60" column="76" lean-forward="false" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="76" />
           <folding />
         </state>
       </provider>

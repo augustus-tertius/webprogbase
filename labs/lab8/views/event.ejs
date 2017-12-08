@@ -12,6 +12,13 @@
     <script src="/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="/stylesheets/style_event_page.css">
+    <script src="/javascripts/confirm.js"></script>
+    <!--<script>-->
+        <!--function onDelete() {-->
+            <!--alert('i work');-->
+            <!--$('#myModal').modal();-->
+        <!--}-->
+    <!--</script>-->
 </head>
 <body>
     <div class="event_page">
@@ -58,14 +65,45 @@
                     </form>
                 </div>
                 <div class="col-md-6" >
-                    <form action="/event/delete/<%=event.id%>" method="post">
-                        <button class="btn btn-block btn-danger" type="submit">Delete event</button>
+                    <form>
+                        <button type="button" class="btn btn-block btn-danger"  data-toggle="modal" data-target="#myModal">
+                        Delete event
+                        </button>
                     </form>
+
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Confirm delete</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure? This action is irreversible.</p>
+                                </div>
+                                <div class="modal-footer container-fluid">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-default form-control" data-dismiss="modal"> Close </button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <form action="/event/delete/<%=event.id%>" method="post">
+                                                <button type="submit" class="btn btn-danger form-control">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
                 </div>
              </div>
             </div>
         </div>
+
     </div>
 </body>
 </html>

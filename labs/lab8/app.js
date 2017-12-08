@@ -14,6 +14,7 @@ const basicAuth = require('basic-auth');
 let config = require('./config');
 
 app.set('view engine', 'ejs');
+
 app.use(express.static('public'));
 
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
