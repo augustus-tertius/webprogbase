@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-<H1>404<br>Sorry, i can`t find such page.</H1>
+    <%if(code == 404) {%>
+        <H1>404<br>Sorry, i can`t find such page.</H1>
+    <%} else if (code == 500) {%>
+        <H1>500<br>Sorry, an error happened on the server.</H1>
+    <%} else if (code == 401) {%>
+        <H1>401<br>You are not authorised to view this page.</H1>
+    <%}%>
+
 </body>
 </html>

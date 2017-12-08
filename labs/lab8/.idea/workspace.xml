@@ -18,17 +18,17 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="599">
-              <caret line="507" column="25" lean-forward="false" selection-start-line="507" selection-start-column="25" selection-end-line="507" selection-end-column="25" />
+              <caret line="507" column="35" lean-forward="false" selection-start-line="507" selection-start-column="35" selection-end-line="507" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="not_found.ejs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/not_found.ejs">
+      <file leaf-file-name="error.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/error.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state relative-caret-position="418">
+              <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -98,8 +98,9 @@
         <option value="$PROJECT_DIR$/views/add.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/confirm.js" />
         <option value="$PROJECT_DIR$/views/event.ejs" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/not_found.ejs" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/views/error.ejs" />
       </list>
     </option>
   </component>
@@ -225,12 +226,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1512752466594</updated>
-      <workItem from="1512752468452" duration="13568000" />
+      <workItem from="1512752468452" duration="14148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13568000" />
+    <option name="totallyTimeSpent" value="14148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="80" y="-5" width="1841" height="1086" extended-state="6" />
@@ -372,15 +373,15 @@
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="599">
-          <caret line="507" column="25" lean-forward="false" selection-start-line="507" selection-start-column="25" selection-end-line="507" selection-end-column="25" />
+          <caret line="507" column="35" lean-forward="false" selection-start-line="507" selection-start-column="35" selection-end-line="507" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/not_found.ejs">
+    <entry file="file://$PROJECT_DIR$/views/error.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        <state relative-caret-position="418">
+          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
           <folding />
         </state>
       </provider>

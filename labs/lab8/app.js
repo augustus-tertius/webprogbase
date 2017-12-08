@@ -79,7 +79,7 @@ passport.deserializeUser(function (id, done) {
 });
 
 function checkAuth(req, res, next) {
-    if (!req.user) return res.sendStatus(401);
+    if (!req.user) return res.render('error', {code: 401});;
     next();
 }
 
@@ -87,17 +87,17 @@ function checkAuthor(req, res, next) {
     events.getById(req.params.guid)
         .then(event => {
             if(event.authorId !== req.user.id)
-                res.sendStatus(401);
+                res.render('error', {code: 401});
         })
         .catch(() => {
-            res.sendStatus(500);
+            res.render('error', {code: 500});
         });
     next();
 }
 
 function checkAdmin(req, res, next) {
     if (req.user.role !== 'admin')
-        res.sendStatus(401);
+        res.render('error', {code: 401});
     next();
 }
 
@@ -199,7 +199,7 @@ app.get('/events',
             })
             .catch(data => {
                 console.log("An error occured: ", data);
-                res.sendStatus(500);
+                res.render('error', {code: 500});
             });
     });
 
@@ -219,7 +219,7 @@ app.get('/event/:guid([0-9a-f-]{24})',
             .catch(
                 err => {
                     console.log(err);
-                    res.sendStatus(404);
+                    res.render('error', {code: 404});
                 });
     });
 
@@ -241,7 +241,7 @@ app.get('/search',
         })
         .catch(data => {
             console.log("An error occurred: ", data);
-            res.sendStatus(500);
+            res.render('error', {code: 500});
         });
 });
 
@@ -257,7 +257,7 @@ app.get('/everyone',
             })
             .catch(data => {
                 console.log("An error occured: ", data);
-                res.sendStatus(500);
+                res.render('error', {code: 500});
             });
     });
 
@@ -283,7 +283,7 @@ app.post('/event/delete/:guid([0-9a-f-]{24})',
             .catch(
                 err => {
                     console.log(err);
-                    res.sendStatus(404);
+                    res.render('error', {code: 404});
                 });
     });
 
@@ -505,7 +505,7 @@ app.post('/api/v1/user/event/create', basic_auth, upload.single('pic'),
     });
 
 app.get('*', function(req, res){
-    res.render('not_found');
+    res.render('error', {code: 404});
 });
 
 
