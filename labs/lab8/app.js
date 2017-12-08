@@ -504,6 +504,11 @@ app.post('/api/v1/user/event/create', basic_auth, upload.single('pic'),
         }
     });
 
+app.get('*', function(req, res){
+    res.render('not_found');
+});
+
+
 let event_list;
 
 let portNum = config.port;
