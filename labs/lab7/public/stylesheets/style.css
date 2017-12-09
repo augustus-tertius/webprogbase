@@ -144,3 +144,8 @@ ul {
 .panel {
     background-color: rgba(125, 127, 129, 0.35);
 }
+
+.bot-border {
+    border-bottom:1px rgba(125, 127, 129, 0.7) solid;
+    margin:5px 0  5px 0
+}

@@ -286,13 +286,23 @@ app.post('/event/delete/:guid([0-9a-f-]{24})',
                 });
     });
 
+app.get('/docs/api/v1',
+    (req, res) => {
+        res.render('docs', {user: req.user});
+    });
 
 app.get('/api/v1/',
     (req, res) => {
     let d = "localhost:3000";
     let resp = {
         user_data: d + "/api/v1/user",
-        user_events: d + "/api/v1/user/events"
+        user_events: d + "/api/v1/user/events",
+        event: d + "/api/v1/event/{event_id}",
+        create_event: d + "/api/v1/event/create",
+        update_event: d + "/api/v1/event/update/{event_id}",
+        delete_event: d + "/api/v1/event/delete/{event_id}",
+        image: d + "/api/v1/images/{image_id}",
+
     };
     res.send(JSON.stringify(resp, null, 4));
 });
@@ -319,7 +329,7 @@ app.get('/api/v1/user/events', basic_auth,
         if (req.user) {
             let q = (req.query.name) ? (req.query.name) : "";
             let page = (req.query.page && req.query.page > 1) ? req.query.page : 1;
-            let per_page = (req.query.items && req.query.items >= 1) ? req.query.items : 5;
+            let per_page = (req.query.items && req.query.items >= 1) ? parseInt(req.query.items) : 5;
             // let found = await events.searchByName(req.query.q, page, per_page, req.user.id);
             // console.log(found);
             events.searchByName(q, page, per_page, req.user.id)
