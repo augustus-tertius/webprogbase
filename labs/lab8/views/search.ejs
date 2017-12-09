@@ -10,9 +10,48 @@
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <script src="/jq/jquery.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js'></script>
     <script src="/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="/stylesheets/style_search.css">
+    <script src="javascripts/search.js"></script>
+
+    <script id="my-list-template" type="x-tmpl-mustache">
+    <div class="col-md-12">
+        <ul>
+            {{#list}}
+            <div class="container-fluid">
+                <li>
+                    <div class="col-md-10 event_block">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                    {{name}}
+                            </div>
+                            <div class="panel-body">
+                            <div class="col-md-5">
+                                    <img alt="event image" src="{{picture}}">
+                            </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">Place </div>
+                                    <div class="col-md-8 container">
+                                        <span class="rwd-line"> <div> {{place}} </div> </a> </span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
+                                    <div class="col-md-3">Date</div>
+                                    <div class="col-md-9 container">
+                                        <span class="rwd-line"> <div> {{ date }} </div> </a> </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </li>
+            </div>
+            {{/list}}
+        </ul>
+        </div>
+    </script>
 </head>
 <body>
 
@@ -23,42 +62,9 @@
     <button type="submit">Search</button>
 </form>
 
-<%if (found.length > 0) { %>
-<ul>
-    <div class="container-fluid">
-    <%for(let i in found) { %>
-    <li>
-            <div class="col-md-6 event_block">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <%let event_path = 'event/'+ found[i].id%>
-                        <div class="name"> <a href="<%=event_path%>"> <%=found[i].name%> </a></div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-md-5">
-                            <img alt="event image" src="<%=found[i].picture%>">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="col-md-3">Place </div>
-                            <div class="col-md-8 container">
-                                <span class="rwd-line"> <div> <%=found[i].place%></div> </a> </span>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
-                            <div class="col-md-3">Date</div>
-                            <div class="col-md-9 container">
-                                <span class="rwd-line"> <div> <%=found[i].date%></div> </a> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-         </li>
-    <%}%>
-        </div>
-</ul>
-<%} else { %>
-Sorry, nothing matches your search.
-<%}%>
+<div id="res_events" class="container-fluid">
+
+</div>
+
 </body>
 </html>

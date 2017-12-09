@@ -226,23 +226,24 @@ app.get('/event/:guid([0-9a-f-]{24})',
 app.get('/search',
     checkAuth,
     (req, res) => {
-    let found = [];
-    if (!req.query)
-        res.render('search', {found});
-    events.getAll(req.user.id)
-        .then(data => {
-            console.log(data);
-            event_list = data;
-            for (let i of event_list) {
-                if (i.name.indexOf(req.query.input) !== -1)
-                    found.push(i);
-            }
-            res.render('search', {found, user: req.user});
-        })
-        .catch(data => {
-            console.log("An error occurred: ", data);
-            res.render('error', {code: 500});
-        });
+    // let found = [];
+    // if (!req.query)
+    //     res.render('search', {found});
+    // events.getAll(req.user.id)
+    //     .then(data => {
+    //         console.log(data);
+    //         event_list = data;
+    //         for (let i of event_list) {
+    //             if (i.name.indexOf(req.query.input) !== -1)
+    //                 found.push(i);
+    //         }
+    //         res.render('search', {found, user: req.user});
+    //     })
+    //     .catch(data => {
+    //         console.log("An error occurred: ", data);
+    //         res.render('error', {code: 500});
+    //     });
+        res.render('search', {user: req.user});
 });
 
 app.get('/everyone',
@@ -332,6 +333,8 @@ app.get('/api/v1/user/events', basic_auth,
                                 id: i.id,
                                 name: i.name,
                                 date: i.date,
+                                place: i.place,
+                                picture: i.picture,
                                 info: "/api/v1/user/event/" + i.id
                             };
                             resp.push(info);
