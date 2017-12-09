@@ -1,0 +1,337 @@
+<% include partials/header %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/jq/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <link href="/stylesheets/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <h1>Api v1 documenantion</h1>
+
+    <div class="container-fluid">
+        <h3>Entry point</h3>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Entry point</H4></div>
+        <div class="col-md-8 container">
+            <code>/api/v1</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Method</H4></div>
+        <div class="col-md-8 container">
+            <code>GET</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Parameters</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line"> <div> none </div></span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Return values</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line">
+                <pre>
+                    {
+                        "user_data": "localhost:3000/api/v1/user",
+                        "user_events": "localhost:3000/api/v1/user/events",
+                        "event": "localhost:3000/api/v1/event/{event_id}",
+                        "create_event": "localhost:3000/api/v1/event/create",
+                        "update_event": "localhost:3000/api/v1/event/update/{event_id}",
+                        "delete_event": "localhost:3000/api/v1/event/delete/{event_id}",
+                        "image": "localhost:3000/api/v1/images/{image_id}"
+                    }</pre>
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+    </div>
+
+
+    <div class="container-fluid">
+        <h3>User info</h3>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Entry point</H4></div>
+        <div class="col-md-8 container">
+            <code>/api/v1/user</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Method</H4></div>
+        <div class="col-md-8 container">
+            <code>GET</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Parameters</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line"> <div> none </div></span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Return values</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line">
+                <pre>
+                    {
+                        "username": "user",
+                        "events_quan": 2
+                    }</pre>
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+    </div>
+
+
+    <div class="container-fluid">
+        <h3>User events</h3>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Entry point</H4></div>
+        <div class="col-md-8 container">
+            <code>/api/v1/user/events</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Method</H4></div>
+        <div class="col-md-8 container">
+            <code>GET</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Parameters</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line">
+                <div>   name - filter string <br>
+                        page - number of page (default is 1) <br>
+                        items - number of events per page (default is 5) <br>
+                        <code>/api/v1/user/events?name=test&items=2&page=2</code>
+                </div>
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Return values</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line">
+                <pre>
+                    [
+                        {
+                            "id": "5a2ba815e679150f1056ffe4",
+                            "name": "test name 1",
+                            "date": "06.12.2017",
+                            "info": "/api/v1/user/event/5a2ba815e679150f1056ffe4"
+                        },
+                        {
+                            "id": "5a2ba81de679150f1056ffe5",
+                            "name": "test name 2",
+                            "date": "06.12.2017",
+                            "info": "/api/v1/user/event/5a2ba81de679150f1056ffe5"
+                        }
+                    ]</pre>
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+    </div>
+
+
+    <div class="container-fluid">
+        <h3>Create event</h3>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Entry point</H4></div>
+        <div class="col-md-8 container">
+            <code>/api/v1/event/create</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Method</H4></div>
+        <div class="col-md-8 container">
+            <code>POST</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Parameters</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line">
+                <div>   name - event name <br>
+                        place - event place <br>
+                        duration - event duration <br>
+                        data - event date <br>
+                        pic - event picture
+                        All fiels must be specified, otherwise you'l receive an error:
+                        <pre>
+                    {
+                        "message": "please, specify name, place, duration, date and picture in body."
+                    } </pre>
+                </div>
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Return values</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line">
+                <pre>
+                    {
+                        "message":"successfully created the event"
+                    }</pre>
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+    </div>
+
+
+    <div class="container-fluid">
+        <h3>Update event</h3>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Entry point</H4></div>
+        <div class="col-md-8 container">
+            <code>/api/v1/event/update/{event_id}</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Method</H4></div>
+        <div class="col-md-8 container">
+            <code>POST</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Parameters</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line">
+                <div>   name - event name <br>
+                        place - event place <br>
+                        duration - event duration <br>
+                        data - event date <br>
+                        One of fields must be specified, otherwise you'l receive an error:
+                        <pre>
+                    {
+                        "message": "please, specify name, place, duration or date to update in body."
+                    } </pre>
+                </div>
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Return values</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line">
+                <pre>
+                    {
+                        "message":"successfully updated the event"
+                    }</pre>
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+    </div>
+
+
+    <div class="container-fluid">
+        <h3>Delete event</h3>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Entry point</H4></div>
+        <div class="col-md-8 container">
+            <code>/api/v1/event/delete/{event_id}</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Method</H4></div>
+        <div class="col-md-8 container">
+            <code>POST</code>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Parameters</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line"><div>none</div></span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+
+        <div class="col-md-3"><H4>Return values</H4></div>
+        <div class="col-md-9 container">
+            <span class="rwd-line">
+                <pre>
+                    {
+                        "message":"successfully deleted the event"
+                    }</pre>
+            </span>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="bot-border"></div>
+    </div>
+</body>
+</html>

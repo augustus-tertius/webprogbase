@@ -271,6 +271,10 @@ app.post('/event/delete/:guid([0-9a-f-]{24})',
                 });
     });
 
+app.get('/docs/api/v1',
+    (req, res) => {
+    res.render('docs', {user: req.user});
+});
 
 app.get('/api/v1/',
     (req, res) => {

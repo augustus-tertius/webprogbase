@@ -14,17 +14,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="301" column="41" lean-forward="false" selection-start-line="301" selection-start-column="41" selection-end-line="301" selection-end-column="41" />
+            <state relative-caret-position="313">
+              <caret line="483" column="34" lean-forward="true" selection-start-line="483" selection-start-column="34" selection-end-line="483" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="docs.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="docs.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/docs.ejs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="6297">
@@ -134,7 +134,7 @@
               <item name="lab7" type="b2602c69:ProjectViewProjectNode" />
               <item name="lab7" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lab7" type="b2602c69:ProjectViewProjectNode" />
@@ -155,7 +155,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab8" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -195,15 +195,15 @@
       <workItem from="1512633053135" duration="4150000" />
       <workItem from="1512667796351" duration="19646000" />
       <workItem from="1512752168387" duration="1199000" />
-      <workItem from="1512807586790" duration="4488000" />
+      <workItem from="1512807586790" duration="6516000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35975000" />
+    <option name="totallyTimeSpent" value="38003000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="12" y="14" width="1841" height="1086" extended-state="6" />
+    <frame x="80" y="-5" width="1841" height="1086" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19032082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -472,18 +472,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="301" column="41" lean-forward="false" selection-start-line="301" selection-start-column="41" selection-end-line="301" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/docs.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6297">
           <caret line="327" column="55" lean-forward="false" selection-start-line="327" selection-start-column="55" selection-end-line="327" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="483" column="34" lean-forward="true" selection-start-line="483" selection-start-column="34" selection-end-line="483" selection-end-column="34" />
           <folding />
         </state>
       </provider>

@@ -38,11 +38,14 @@ function requestUsers() {
 
 function renderUsers() {
     let filteredUsers = model.filteredUsers;
-    console.log(filteredUsers);
 
-    let template = document.getElementById("my-list-template").innerHTML;
-    // згенерувати HTML строку на основі шаблону і даних
-    let renderedHTML = Mustache.render(template, { list: filteredUsers });
-    // помістити строку з HTML всередину елемента з ідентифікатором "my-list"
-    document.getElementById("res_events").innerHTML = renderedHTML;
+    if (filteredUsers.length > 0) {
+        let template = document.getElementById("my-list-template").innerHTML;
+        // згенерувати HTML строку на основі шаблону і даних
+        let renderedHTML = Mustache.render(template, { list: filteredUsers });
+        // помістити строку з HTML всередину елемента з ідентифікатором "my-list"
+        document.getElementById("res_events").innerHTML = renderedHTML;
+    } else {
+        document.getElementById("res_events").innerText = "Nothing matches your search";
+    }
 }
